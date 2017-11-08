@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="2.css">
+	</head>
+	<body>
+		<button value='http://demo4296963.mockable.io/listCars' onClick='onClick(value)'>Load</button>
+		<div id="cards">
+			<img width="300px" height="200px" id="loading" src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"/>
+		</div>
+		<script defer>
+			const JSON_PATH = 'http://demo4296963.mockable.io/listCars';
+			var bool =0;
+			function onClick(value){
+				if(bool==0){
+					document.getElementById('loading').style.display = 'block';
+					const button = document.querySelector('button');
+					button.innerHTML='loading...';
+					setTimeout(function(){
+						document.getElementById('loading').style.display = 'none';
+					button.innerHTML='Items are loaded';
+						fetch(JSON_PATH).then(onResponse, onError).then(giveText);
+						}, 2000);}
+				bool=1;
+			}
+			function giveText(text){
+				const cards = document.getElementById('cards');
+				const TEXT = JSON.parse(text);
+				for(let Object of TEXT){
+					var main = document.createElement('div');
+					main.classList.add('card');
+					var left_part = document.createElement('div');
+					left_part.classList.add('title');
+					var right_part = document.createElement('div');
+					right_part.classList.add('price');
+
+					
+					left_part.innerHTML=Object.maker + ' '+ Object.model;
+					right_part.innerHTML=Object.price;
+
+					main.appendChild(left_part);
+					main.appendChild(right_part);
+					cards.appendChild(main);
+				}
+			}
+			function onResponse(response){
+				return response.text();
+			}
+			function onError(error){
+				console.log('Error: ' + error);
+			}
+		</script>
+	</body>
+</html>
