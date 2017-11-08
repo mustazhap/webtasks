@@ -3,7 +3,7 @@ function myFunction() {
   var ids = ["s11","s12","s13","s21","s22","s23","s31","s32","s33"];
   var x = [];
   for (var i = 0; i < ids.length; i++) {
-      x[i] = document.getElementById(ids[i]).value;
+      x.push( document.getElementById(ids[i]).value);
       
   }
   console.log(x);

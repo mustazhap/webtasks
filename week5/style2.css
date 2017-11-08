@@ -1,18 +1,12 @@
-#matrix{
+
+#carousel img{
+  width:100px;
+  height:50px;
+}
+#carousel{
   display:flex;
-  width:300px;
-  flex-wrap:wrap;
 }
-#matrix input{
-  width:80px;
-  padding:5px;
-  font-size:24px;
-}
-#result{
-  font-size:24px;
-  color:red;
-}
-#determinant{
-  font-size:24px;
-  color:green;
+#bigImage img{
+  width:500px;
+  height:300px;
 }
